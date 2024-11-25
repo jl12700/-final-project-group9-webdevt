@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import './STYLES/SetPass.css'; 
 
-const SetPass = () => {
+
+const SetPass = (role) => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
   const handleSetPassword = (e) => {
-    e.preventDefault();  // Prevent default form submission behavior
-
     if (newPassword === confirmPassword) {
       alert('Password set successfully!');
       setErrorMessage('');
-      navigate("/UserPage"); 
+      
+        navigate("/UserPage")
+      
     } else {
-      setErrorMessage('***PASSWORDS DO NOT MATCH***');
+      setErrorMessage('***PASSWORD DO NOT MATCH***');
     }
   };
 
@@ -37,7 +38,7 @@ const SetPass = () => {
       <h2>Set Your Password</h2>
       <p>In order to keep your account safe, you need to create a strong password.</p>
 
-      <form className="set-password-form" onSubmit={handleSetPassword}>
+      <form className="set-password-form"  onSubmit={(e) => e.preventDefault()}>
         <div className="form-group">
           <label htmlFor="newPassword">Enter a new password:</label>
           <input
@@ -66,7 +67,7 @@ const SetPass = () => {
 
         {errorMessage && <div className="error-message">{errorMessage}</div>}
 
-        <button type="submit" className="set-password-button">
+        <button type="submit" onClick={handleSetPassword} className="set-password-button">
           Next
         </button>
       </form>

@@ -2,16 +2,17 @@ import React, { useState } from "react";
 import   "./STYLES/User.css";
 
 const User = () => {
-    (
+   return (
         <div>
-            <div class="sidebar">
-                <h2>Sidebar</h2>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
+            <div className="sidebar-container">
+                <div class="sidebar">
+                    <ul>
+                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="#">User Profile</a></li>
+                        <li><a href="#">Current reservations</a></li>
+                        <li><a href="#">Log Out</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     )

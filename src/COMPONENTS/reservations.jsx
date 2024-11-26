@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import   "./STYLES/User.css";
 import "./STYLES/reservations.css"
+import ReserveEquipment from './ReserveEquipment';
+import { IoCart } from "react-icons/io5";
 
 
 
@@ -20,6 +22,9 @@ const Reservations = () => {
     const LogOut = () => {
         navigate ("/")
     }
+    const ReservationCart = () => {
+        navigate ("/cart")
+    }
 
    return (
         <div>
@@ -32,6 +37,14 @@ const Reservations = () => {
                         <li><a onClick={UserprofileClick} className="item" href="#">User Profile</a></li>
                         <li><a onClick={LogOut} className="item" href="#">Log Out</a></li>
                     </ul>
+                </div>
+                <div><button className="btn btn-secondary" onClick={ReservationCart}>
+                <IoCart />
+              </button>
+                
+                </div>
+                <div className="content">
+                    <ReserveEquipment />
                 </div>
             </div>
         </div>

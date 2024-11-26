@@ -1,41 +1,72 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import   "./STYLES/User.css";
-import "./STYLES/Dashboard.css"
-
-
-
+import EquipmentList from "./EquipmentList";
+import "./STYLES/User.css";
+import "./STYLES/Dashboard.css";
 
 const Dashboard = () => {
-    const navigate = useNavigate ();
+    const navigate = useNavigate();
 
     const DashboardClick = () => {
-        navigate ("/dashboard")
-    }
+        navigate("/dashboard");
+    };
     const ReservationsClick = () => {
-        navigate ("/reservations")
-    }
+        navigate("/reservations");
+    };
     const UserprofileClick = () => {
-        navigate ("/user-profile")
-    }
+        navigate("/user-profile");
+    };
     const LogOut = () => {
-        navigate ("/")
-    }
+        navigate("/");
+    };
 
-   return (
+    return (
         <div>
             <div>
-                <div class="sidebar">
+                <div className="sidebar">
                     <ul>
                         <h2>La Serve</h2>
-                        <li><a onClick={DashboardClick} id="active" className="item" href="#">Dashboard</a></li>
-                        <li><a onClick={ReservationsClick} className="item" href="#">Reservations</a></li>
-                        <li><a onClick={UserprofileClick} className="item" href="#">User Profile</a></li>
-                        <li><a onClick={LogOut} className="item" href="#">Log Out</a></li>
+                        <li>
+                            <a
+                                onClick={DashboardClick}
+                                id="active"
+                                className="item"
+                                href="#"
+                            >
+                                Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                onClick={ReservationsClick}
+                                className="item"
+                                href="#"
+                            >
+                                Reservations
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                onClick={UserprofileClick}
+                                className="item"
+                                href="#"
+                            >
+                                User Profile
+                            </a>
+                        </li>
+                        <li>
+                            <a onClick={LogOut} className="item" href="#">
+                                Log Out
+                            </a>
+                        </li>
                     </ul>
+                </div>
+                <div className="content">
+                    <EquipmentList />
                 </div>
             </div>
         </div>
-    )
+    );
+};
 
-}; export default Dashboard
+export default Dashboard;

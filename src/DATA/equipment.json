@@ -1,0 +1,25 @@
+{
+  "equipment": [
+    {
+      "id": "774e",
+      "equipmentID": "123",
+      "equipmentName": "123",
+      "quantity": 123,
+      "status": "Available"
+    },
+    {
+      "id": "2289",
+      "equipmentID": "123",
+      "equipmentName": "123",
+      "quantity": 123,
+      "status": "Available"
+    },
+    {
+      "id": "f984",
+      "equipmentID": "001112",
+      "equipmentName": "Mac Charger",
+      "quantity": 15,
+      "status": "Available"
+    }
+  ]
+}

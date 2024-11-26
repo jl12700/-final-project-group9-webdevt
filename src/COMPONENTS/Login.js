@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Serve from './Serve.png';
 import "./STYLES/Login.css";
 
 const Login = () => {
@@ -44,9 +43,7 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <div className="logo-container">
-        <img src={Serve} alt="Logo" className="login-logo" />
-      </div>
+      <h2>Login</h2>
       <div className="role-selection">
         <label htmlFor="role">Select Role:</label>
         <select id="role" value={role} onChange={handleRoleChange}>

@@ -1,11 +1,10 @@
 body {
-    height: 100%;
+    height: 100vh;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #282c34 ;
-    margin-top: 3%;
+    background-color: #e9ecef;
 }
 
 .login-container {
@@ -28,37 +27,18 @@ body {
 }
 
 .role-selection label {
-    font-size: 18px;
-    margin-left: 40%;
+    font-size: 16px;
     color: #333;
     display: block;
     margin-bottom: 5px;
 }
 
-.logo-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-
-}
-
-.login-logo {
-    width: 350px; /* Increased size */
-    height: 350px; /* Increased size */
-    padding-top: 20px;
-    object-fit: contain;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
-    border-radius: 10%; /* Adjust this value for the desired rounding */
-    
-}
-
 .role-selection select {
-    width: 60%;
+    width: 100%;
     padding: 8px;
     border-radius: 8px;
     border: 1px solid green;
     font-size: 16px;
-    margin-left: 20%;
 }
 
 .login-form .form-group {
@@ -72,7 +52,7 @@ body {
     margin-bottom: 5px;
 }
 
-.login-form input {     
+.login-form input {
     width: 95%;
     padding: 8px;
     border-radius: 8px;

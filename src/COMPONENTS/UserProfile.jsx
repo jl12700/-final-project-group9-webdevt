@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import   "./STYLES/User.css";
+import "./STYLES/UserProfile.css"
 
 
 
-const User = () => {
+const UserProfile = () => {
     const navigate = useNavigate ();
 
     const DashboardClick = () => {
@@ -28,7 +29,7 @@ const User = () => {
                         <h2>La Serve</h2>
                         <li><a onClick={DashboardClick} className="item" href="#">Dashboard</a></li>
                         <li><a onClick={ReservationsClick} className="item" href="#">Reservations</a></li>
-                        <li><a onClick={UserprofileClick} className="item" href="#">User Profile</a></li>
+                        <li><a onClick={UserprofileClick} id="active" className="item" href="#">User Profile</a></li>
                         <li><a onClick={LogOut} className="item" href="#">Log Out</a></li>
                     </ul>
                 </div>
@@ -36,4 +37,4 @@ const User = () => {
         </div>
     )
 
-}; export default User
+}; export default UserProfile

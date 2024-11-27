@@ -36,7 +36,11 @@ const Login = () => {
     e.preventDefault();
     if (role === "User" || role === "Admin") {
       console.log(`${role} Login Data:`, formData);
-      navigate("/setpassword");
+        if (role === "User"){
+          navigate("/setpassword");
+        }else if (role === "Admin"){
+          navigate("/AdminPage")
+        }
     } else {
       alert("Please select a role!");
     }

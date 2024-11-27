@@ -1,0 +1,39 @@
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import   "./STYLES/Admin.css";
+
+
+
+const Statistics = () => {
+    const navigate = useNavigate ();
+
+    const HandleReservationsClick = () => {
+        navigate ("/handle-reservations")
+    }
+    const ManageEquipmentClick = () => {
+        navigate ("/manage-equipment")
+    }
+    const StatisticsClick = () => {
+        navigate ("/statistics")
+    }
+    const LogOut = () => {
+        navigate ("/")
+    }
+
+   return (
+        <div>
+            <div>
+                <div class="sidebar">
+                    <ul>
+                        <h2>La Serve</h2>
+                        <li><a onClick={HandleReservationsClick} className="item" href="#">Handle Reservations</a></li>
+                        <li><a onClick={ManageEquipmentClick} className="item" href="#">Manage Equipment</a></li>
+                        <li><a onClick={StatisticsClick}id="active" className="item" href="#">Statistics</a></li>
+                        <li><a onClick={LogOut} className="item" href="#">Log Out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    )
+
+}; export default Statistics

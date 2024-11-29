@@ -1,15 +1,23 @@
-
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     display: flex;
-    
 }
 
+/* Sidebar logo styles */
+.sidebar-logo {
+    width: 100%; /* Adjust the size of the logo */
+    height: 30%;
+    margin: 20px auto; /* Center the image within the sidebar */
+    display: block; /* Ensure it’s treated as a block element */
+    margin-top: -1%;
+}
+
+/* Sidebar styles */
 .sidebar {
     height: 100%;
     width: 255px;
-    background-color: #2F4050;
+    background-color: #32620e;
     position: fixed;
     top: 0;
     left: 0;
@@ -21,50 +29,53 @@ body {
     align-items: flex-start;
 }
 
-.sidebar h2 {
-    margin-top: 0;
-    color: greenyellow;
-}
-
+/* Sidebar items styling */
 .sidebar ul {
+    margin-top: -10%;
     list-style-type: none;
     padding: 0;
     margin-left: 10px;
 }
 
+/* Adjust the margin and padding to move items up */
 .sidebar ul li {
-    margin: 10px 0;
-    padding-top: 30px;
+    margin: 5px 0; /* Reduced margin to move items up */
+    padding-top: 10px; /* Reduced padding to bring items closer together */
+    padding-bottom: 10px; /* Reduced padding for more compact spacing */
+    position: relative;
 }
 
+/* Sidebar links */
 .sidebar ul li a {
     color: rgb(255, 255, 255);
     text-decoration: none;
     font-size: 17px;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 10px; /* Adjusted padding */
+    padding-bottom: 10px; /* Adjusted padding */
     padding-left: 10px;
 }
 
 .sidebar ul li a:hover {
-    background-color: #293846;
+    background-color: #32620e; /* Slight change to hover color */
     text-decoration: underline;
     text-decoration-color: white;
     color: inherit;
 }
+
+/* Styling for content area */
 .content {
     flex: 1;
     padding: 20px;
     box-sizing: border-box;
 }
 
-
-
-#active{
-    background-color: #293846;
+/* Active item styles */
+#active {
+    background-color: #32620e; /* Active item color */
     color: white;
     font-weight: bold;
     text-decoration: underline;
     text-decoration-color: white;
     border-left: 2px solid white;
-    padding-right: 10px;}
+    padding-right: 10px;
+}

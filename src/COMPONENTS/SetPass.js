@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import './STYLES/SetPass.css'; 
 
-
 const SetPass = (role) => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -10,14 +9,14 @@ const SetPass = (role) => {
   const navigate = useNavigate();
 
   const handleSetPassword = (e) => {
-    if (newPassword === confirmPassword) {
+    if (newPassword.length < 8) {
+      setErrorMessage('***PASSWORD MUST BE AT LEAST 8 CHARACTERS LONG***');
+    } else if (newPassword !== confirmPassword) {
+      setErrorMessage('***PASSWORDS DO NOT MATCH***');
+    } else {
       alert('Password set successfully!');
       setErrorMessage('');
-      
-        navigate("/UserPage")
-      
-    } else {
-      setErrorMessage('***PASSWORD DO NOT MATCH***');
+      navigate("/UserPage");
     }
   };
 
@@ -38,14 +37,14 @@ const SetPass = (role) => {
       <h2>Set Your Password</h2>
       <p>In order to keep your account safe, you need to create a strong password.</p>
 
-      <form className="set-password-form"  onSubmit={(e) => e.preventDefault()}>
+      <form className="set-password-form" onSubmit={(e) => e.preventDefault()}>
         <div className="form-group">
           <label htmlFor="newPassword">Enter a new password:</label>
           <input
             type="password"
             id="newPassword"
             name="newPassword"
-            placeholder="Enter a new password"
+            placeholder="Enter a new password (min 8 characters)"
             value={newPassword}
             onChange={handleInputChange}
             required

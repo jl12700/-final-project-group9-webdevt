@@ -47,102 +47,107 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <div className="logo-container">
+    <div className="container">
+      {/* Image on the left */}
+      <div className="image-container">
         <img src={Serve} alt="Logo" className="login-logo" />
       </div>
-      <div className="role-selection">
-        <label htmlFor="role">Select Role:</label>
-        <select id="role" value={role} onChange={handleRoleChange}>
-          <option value="">--Choose--</option>
-          <option value="User">User</option>
-          <option value="Admin">Admin</option>
-        </select>
+
+      {/* Login form on the right */}
+      <div className="login-container">
+        <div className="role-selection">
+          <label htmlFor="role">Select Role:</label>
+          <select id="role" value={role} onChange={handleRoleChange}>
+            <option value="">--Choose--</option>
+            <option value="User">User</option>
+            <option value="Admin">Admin</option>
+          </select>
+        </div>
+
+        {role && (
+          <form onSubmit={handleSubmit} className="login-form">
+            {role === "User" && (
+              <>
+                <div className="form-group">
+                  <label htmlFor="studentNumber">Student Number:</label>
+                  <input
+                    type="text"
+                    id="studentNumber"
+                    name="studentNumber"
+                    value={formData.studentNumber}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="email">Email:</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="name">Name:</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="password">Password:</label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+              </>
+            )}
+
+            {role === "Admin" && (
+              <>
+                <div className="form-group">
+                  <label htmlFor="username">Username:</label>
+                  <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    value={formData.username}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="password">Password:</label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+              </>
+            )}
+
+            <button type="submit" className="login-button">
+              Login
+            </button>
+          </form>
+        )}
       </div>
-
-      {role && (
-        <form onSubmit={handleSubmit} className="login-form">
-          {role === "User" && (
-            <>
-              <div className="form-group">
-                <label htmlFor="studentNumber">Student Number:</label>
-                <input
-                  type="text"
-                  id="studentNumber"
-                  name="studentNumber"
-                  value={formData.studentNumber}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="email">Email:</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="name">Name:</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="password">Password:</label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-            </>
-          )}
-
-          {role === "Admin" && (
-            <>
-              <div className="form-group">
-                <label htmlFor="username">Username:</label>
-                <input
-                  type="text"
-                  id="username"
-                  name="username"
-                  value={formData.username}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="password">Password:</label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-            </>
-          )}
-
-          <button type="submit" className="login-button">
-            Login
-          </button>
-        </form>
-      )}
     </div>
   );
 };

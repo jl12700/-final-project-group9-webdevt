@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import   "./STYLES/User.css";
 import "./STYLES/UserProfile.css"
-
+import dash3 from "./dash3.png"; // Importing the logo image
 
 
 const UserProfile = () => {
@@ -25,8 +25,8 @@ const UserProfile = () => {
         <div>
             <div>
                 <div class="sidebar">
+                <img src={dash3} alt="Dashboard Logo" className="sidebar-logo" />
                     <ul>
-                        <h2>La Serve</h2>
                         <li><a onClick={DashboardClick} className="item" href="#">Dashboard</a></li>
                         <li><a onClick={ReservationsClick} className="item" href="#">Reservations</a></li>
                         <li><a onClick={UserprofileClick} id="active" className="item" href="#">User Profile</a></li>

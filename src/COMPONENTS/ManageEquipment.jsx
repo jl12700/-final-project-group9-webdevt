@@ -1,23 +1,26 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./STYLES/User.css";
-import dash3 from "./dash3.png"; // Importing the logo image
+import "./STYLES/Admin.css";
+import dash3 from "./dash3.png"; 
 
-const User = () => {
-  const navigate = useNavigate();
 
-  const DashboardClick = () => {
-    navigate("/dashboard");
-  };
-  const ReservationsClick = () => {
-    navigate("/reservations");
-  };
-  const UserprofileClick = () => {
-    navigate("/user-profile");
-  };
-  const LogOut = () => {
-    navigate("/");
-  };
+const Admin= () => {
+    const navigate = useNavigate ();
+
+    const HandleReservationsClick = () => {
+        navigate ("/handle-reservations")
+    }
+    const ManageEquipmentClick = () => {
+        navigate ("/manage-equipment")
+    }
+    const StatisticsClick = () => {
+        navigate ("/statistics")
+    }
+    const LogOut = () => {
+        navigate ("/")
+    }
+
+
 
   return (
     <div className="main-container">
@@ -26,18 +29,18 @@ const User = () => {
         <img src={dash3} alt="Dashboard Logo" className="sidebar-logo" />
         <ul>
           <li>
-            <a onClick={DashboardClick} className="item" href="#">
-              Dashboard
+            <a onClick={HandleReservationsClick}  className="item" href="#">
+              Handle Reservations
             </a>
           </li>
           <li>
-            <a onClick={ReservationsClick} className="item" href="#">
-              Reservations
+            <a onClick={ManageEquipmentClick}id="active" className="item" href="#">
+              Manage Equipment
             </a>
           </li>
           <li>
-            <a onClick={UserprofileClick} className="item" href="#">
-              User Profile
+            <a onClick={StatisticsClick} className="item" href="#">
+              Statistics
             </a>
           </li>
           <li>
@@ -55,4 +58,4 @@ const User = () => {
   );
 };
 
-export default User;
+export default Admin;

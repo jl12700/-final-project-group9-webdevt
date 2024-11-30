@@ -7,6 +7,10 @@ import Dashboard from './COMPONENTS/Dashboard';
 import Reservations from './COMPONENTS/reservations';
 import UserProfile from './COMPONENTS/UserProfile';
 import ReservationCart from './COMPONENTS/ReservationCart';
+import Admin from './COMPONENTS/Admin';
+import HandleReservations from './COMPONENTS/HandleReservations';
+import ManageEquipment from './COMPONENTS/ManageEquipment';
+import Statistics from './COMPONENTS/Statistics';
 
 import { EquipmentProvider } from './CONTEXT/EquipmentContext';
 import { ReservationProvider } from './CONTEXT/ReservationContext';
@@ -27,6 +31,12 @@ function App() {
             <Route path="/reservations" element={<Reservations />} />
             <Route path="/user-profile" element={<UserProfile />} />
             <Route path="/cart" element={<ReservationCart />} />
+
+            <Route path="/AdminPage" element={<Admin />} />
+            <Route path="/handle-reservations" element={<HandleReservations />} />
+            <Route path="/manage-equipment" element={<ManageEquipment />} />
+            <Route path="/statistics" element={<Statistics />} />
+
           </Routes>
         </ReservationProvider>
       </EquipmentProvider>

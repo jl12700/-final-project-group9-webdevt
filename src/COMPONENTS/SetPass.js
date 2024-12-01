@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import './STYLES/SetPass.css'; 
+import './Styles/SetPass.css'; 
 
 const SetPass = (role) => {
   const [newPassword, setNewPassword] = useState('');

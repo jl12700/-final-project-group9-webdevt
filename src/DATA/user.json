@@ -1,0 +1,26 @@
+{
+    "users": [
+      {
+        "studentNumber": "20240001",
+        "name": "John Doe",
+        "password": "password123",
+        "email": "johndoe@dlsl.edu.ph",
+        "roles": ["user"]
+      },
+      {
+        "studentNumber": "20240002",
+        "name": "Jane Smith",
+        "password": "admin123", 
+        "email": "janesmith@dlsl.edu.ph",
+        "roles": ["admin"]
+      },
+      {
+        "studentNumber": "20240003",
+        "name": "Michael Brown",
+        "password": "mypassword",
+        "email": "michaelbrown@dlsl.edu.ph",
+        "roles": ["user"]
+      }
+    ]
+  }
+  

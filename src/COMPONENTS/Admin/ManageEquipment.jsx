@@ -1,23 +1,26 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./STYLES/Admin.css";
-import dash3 from "./dash3.png"; 
+import "../Styles/Admin.css";
+import dash3 from "../Assets/dash3.png";
+import EquipmentForm from "./EquipmentForm"
+import Equipments from "./Equipments"
 
-const Admin= () => {
-    const navigate = useNavigate ();
 
-    const HandleReservationsClick = () => {
-        navigate ("/handle-reservations")
-    }
-    const ManageEquipmentClick = () => {
-        navigate ("/manage-equipment")
-    }
-    const StatisticsClick = () => {
-        navigate ("/statistics")
-    }
-    const LogOut = () => {
-        navigate ("/")
-    }
+const Admin = () => {
+  const navigate = useNavigate();
+
+  const HandleReservationsClick = () => {
+    navigate("/handle-reservations")
+  }
+  const ManageEquipmentClick = () => {
+    navigate("/manage-equipment")
+  }
+  const StatisticsClick = () => {
+    navigate("/statistics")
+  }
+  const LogOut = () => {
+    navigate("/")
+  }
 
 
 
@@ -28,12 +31,12 @@ const Admin= () => {
         <img src={dash3} alt="Dashboard Logo" className="sidebar-logo" />
         <ul>
           <li>
-            <a onClick={HandleReservationsClick} id= "active" className="item" href="#">
+            <a onClick={HandleReservationsClick} className="item" href="#">
               Handle Reservations
             </a>
           </li>
           <li>
-            <a onClick={ManageEquipmentClick} className="item" href="#">
+            <a onClick={ManageEquipmentClick} id="active" className="item" href="#">
               Manage Equipment
             </a>
           </li>
@@ -49,9 +52,12 @@ const Admin= () => {
           </li>
         </ul>
       </div>
+      <h2>Manage Equipments</h2>
       <div className="content">
-        {/* This will contain the dynamic content */}
-        {/* You can use React Router here to render specific components */}
+        <h3>Add Equipment</h3>
+        <EquipmentForm />
+        <h3>Equipment List</h3>
+        <Equipments />
       </div>
     </div>
   );

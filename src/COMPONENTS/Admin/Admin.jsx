@@ -1,8 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./STYLES/Admin.css";
-import dash3 from "./dash3.png"; 
-
+import "../Styles/Admin.css";
+import dash3 from "../Assets/dash3.png"; 
 
 const Admin= () => {
     const navigate = useNavigate ();
@@ -29,12 +28,12 @@ const Admin= () => {
         <img src={dash3} alt="Dashboard Logo" className="sidebar-logo" />
         <ul>
           <li>
-            <a onClick={HandleReservationsClick}  className="item" href="#">
+            <a onClick={HandleReservationsClick} className="item" href="#">
               Handle Reservations
             </a>
           </li>
           <li>
-            <a onClick={ManageEquipmentClick}id="active" className="item" href="#">
+            <a onClick={ManageEquipmentClick} className="item" href="#">
               Manage Equipment
             </a>
           </li>

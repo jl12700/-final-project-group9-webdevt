@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { ReservationContext } from '../CONTEXT/ReservationContext';
+import { ReservationContext } from '../../context/ReservationContext';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 
 const EquipmentModal = ({ equipment, onClose }) => {

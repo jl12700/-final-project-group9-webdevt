@@ -1,24 +1,17 @@
 {
   "equipment": [
     {
-      "id": "774e",
-      "equipmentID": "123",
-      "equipmentName": "123",
-      "quantity": 123,
-      "status": "Available"
-    },
-    {
-      "id": "2289",
-      "equipmentID": "123",
-      "equipmentName": "123",
-      "quantity": 123,
-      "status": "Available"
-    },
-    {
-      "id": "f984",
-      "equipmentID": "001112",
+      "id": "998c",
+      "equipmentID": "10000001",
       "equipmentName": "Mac Charger",
-      "quantity": 15,
+      "quantity": 25,
+      "status": "Available"
+    },
+    {
+      "id": "3db6",
+      "equipmentID": "10000002",
+      "equipmentName": "Macbook",
+      "quantity": 25,
       "status": "Available"
     }
   ]

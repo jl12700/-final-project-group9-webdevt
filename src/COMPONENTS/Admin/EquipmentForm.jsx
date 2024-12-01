@@ -1,6 +1,6 @@
 //There's no admin view yet, so use this if you plan to add equipment
 import React, { useState, useContext } from 'react';
-import { EquipmentContext } from '../CONTEXT/EquipmentContext';
+import { EquipmentContext } from '../../context/EquipmentContext';
 import { FaPlusCircle } from 'react-icons/fa';
 
 const EquipmentForm = () => {

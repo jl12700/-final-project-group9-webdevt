@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { EquipmentContext } from '../CONTEXT/EquipmentContext';
+import { EquipmentContext } from '../../context/EquipmentContext';
 
 const EquipmentList = () => {
   const { equipmentList } = useContext(EquipmentContext);

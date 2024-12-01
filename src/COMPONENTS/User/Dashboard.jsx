@@ -1,29 +1,35 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import   "./STYLES/User.css";
-import dash3 from "./dash3.png"; // Importing the logo image
+import "../Styles/User.css";
+import dash3 from "../Assets/dash3.png"; // Importing the logo image
 import EquipmentList from "./EquipmentList";
+import ReserveEquipment from './ReserveEquipment';
+import { IoCart } from "react-icons/io5";
+
 
 const Dashboard = () => {
-    const navigate = useNavigate ();
+    const navigate = useNavigate();
 
     const DashboardClick = () => {
-        navigate ("/dashboard")
+        navigate("/dashboard")
     }
     const ReservationsClick = () => {
-        navigate ("/reservations")
+        navigate("/reservations")
     }
     const UserprofileClick = () => {
-        navigate ("/user-profile")
+        navigate("/user-profile")
     }
     const LogOut = () => {
-        navigate ("/")
+        navigate("/")
+    }
+    const ReservationCart = () => {
+        navigate ("/cart")
     }
 
-   return (
+    return (
         <div>
             <div>
-                <div class="sidebar">
+                <div className="sidebar">
                     <img src={dash3} alt="Dashboard Logo" className="sidebar-logo" />
                     <ul>
                         <li><a onClick={DashboardClick} id="active" className="item" href="#">Dashboard</a></li>
@@ -33,9 +39,15 @@ const Dashboard = () => {
                     </ul>
                 </div>
             </div>
-                <div className="content">
-                    <EquipmentList />
+            <div className="content">
+                <EquipmentList />
+                <div>
+                    <button className="btn btn-secondary" onClick={ReservationCart}>
+                        <IoCart />
+                    </button>
                 </div>
+                <ReserveEquipment />
+            </div>
         </div>
     )
 

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
-import { ReservationContext } from '../CONTEXT/ReservationContext';
+import { ReservationContext } from '../../context/ReservationContext';
 
 const ReservationCart = () => {
   const { cart, removeFromCart, confirmReservation } = useContext(ReservationContext);
@@ -45,9 +45,9 @@ const ReservationCart = () => {
     setFormData({ reservationDate: '', startTime: '', endTime: '', returnDate: '', notes: '' });
   };
   const navigate = useNavigate ();
-  const ReservationsClick = () => {
+  const DashboardClick = () => {
     setFormData({ reservationDate: '', startTime: '', endTime: '', returnDate: '', notes: '' });
-    navigate("/reservations");
+    navigate("/dashboard");
   };
 
   return (
@@ -102,7 +102,7 @@ const ReservationCart = () => {
         <button type="button" className="btn btn-success me-2" onClick={handleConfirm}>
           Confirm Selection
         </button>
-        <button type="button" className="btn btn-secondary" onClick={ReservationsClick}>
+        <button type="button" className="btn btn-secondary" onClick={DashboardClick}>
           Cancel
         </button>
       </form>

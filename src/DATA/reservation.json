@@ -1,8 +1,8 @@
 {
   "reservations": [
     {
-      "id": "a2ea",
-      "reservationID": 1732574711688,
+      "id": "6e56",
+      "reservationID": 1733091508151,
       "user": {
         "userid": "12345",
         "username": "John Doe",
@@ -10,17 +10,22 @@
       },
       "equipment": [
         {
-          "equipmentID": "123",
-          "equipmentName": "123",
-          "quantity": 6
+          "equipmentID": "10000001",
+          "equipmentName": "Mac Charger",
+          "quantity": 1
+        },
+        {
+          "equipmentID": "10000002",
+          "equipmentName": "Macbook",
+          "quantity": 25
         }
       ],
-      "reservationDate": "2024-11-26",
-      "startTime": "09:44",
-      "endTime": "09:45",
-      "returnDate": "2024-11-26",
-      "notes": "Lmao",
-      "status": "Pending"
+      "reservationDate": "2024-12-02",
+      "startTime": "06:18",
+      "endTime": "19:18",
+      "returnDate": "2024-12-06",
+      "notes": "Macc",
+      "status": "Approved"
     }
   ]
 }

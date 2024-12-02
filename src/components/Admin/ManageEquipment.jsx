@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
+
 import { useNavigate } from "react-router-dom";
 import "../Styles/Admin.css";
 import dash3 from "../Assets/dash3.png";
@@ -8,10 +9,13 @@ import { FaBookmark } from "react-icons/fa";
 import { MdManageAccounts } from "react-icons/md";
 import { IoStatsChartSharp } from "react-icons/io5";
 import { BiSolidExit } from "react-icons/bi";
+import ConfirmationDialog from "../ConfirmationDialog";
+
 
 
 const Admin = () => {
   const navigate = useNavigate();
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
 
   const HandleReservationsClick = () => {
     navigate("/handle-reservations")
@@ -23,9 +27,17 @@ const Admin = () => {
     navigate("/statistics")
   }
   const LogOut = () => {
-    navigate("/")
-  }
+    setShowConfirmDialog(true);
+  };
 
+  const handleConfirmLogout = () => {
+    setShowConfirmDialog(false);
+    navigate("/");
+  };
+
+  const handleCancelLogout = () => {
+    setShowConfirmDialog(false);
+  };
 
 
   return (
@@ -53,13 +65,20 @@ const Admin = () => {
             </a>
           </li>
           <li>
-            <BiSolidExit/>
+            <BiSolidExit />
             <a onClick={LogOut} className="item" href="#">
               Log Out
             </a>
           </li>
         </ul>
       </div>
+      {showConfirmDialog && (
+        <ConfirmationDialog
+          confirmText="want to log out"
+          onConfirm={handleConfirmLogout}
+          onCancel={handleCancelLogout}
+        />
+      )}
       <h2>Manage Equipments</h2>
       <div className="content">
         <h3>Add Equipment</h3>

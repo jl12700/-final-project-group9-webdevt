@@ -13,10 +13,33 @@ import { FaUser } from "react-icons/fa";
 
 const Reservations = () => {
   const navigate = useNavigate();
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const { reservations, removeReservation, fetchReservations } = useContext(ReservationListContext);
   const [selectedReservation, setSelectedReservation] = useState(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [reservationToRemove, setReservationToRemove] = useState(null);
+
+  const DashboardClick = () => {
+    navigate("/dashboard");
+  };
+  const ReservationsClick = () => {
+    navigate("/reservations");
+  };
+  const UserprofileClick = () => {
+    navigate("/user-profile");
+  };
+  const LogOut = () => {
+    setShowConfirmDialog(true);
+  };
+
+  const handleConfirmLogout = () => {
+    setShowConfirmDialog(false);
+    navigate("/");
+  };
+
+  const handleCancelLogout = () => {
+    setShowConfirmDialog(false);
+  };
 
   useEffect(() => {
     fetchReservations(); // Fetch reservations when component mounts
@@ -60,12 +83,19 @@ const Reservations = () => {
       <div className="sidebar">
         <img src={dash3} alt="Dashboard Logo" className="sidebar-logo" />
         <ul>
-          <li><BiSolidDashboard /> <a onClick={() => navigate("/dashboard")} className="item" href="#">Dashboard</a></li>
-          <li id="active"><FaBookmark /> <a onClick={() => navigate("/reservations")} className="item" href="#">Reservations</a></li>
-          <li><FaUser /> <a onClick={() => navigate("/user-profile")} className="item" href="#">User Profile</a></li>
-          <li><BiSolidExit /> <a onClick={() => navigate("/")} className="item" href="#">Log Out</a></li>
+          <li><BiSolidDashboard /> <a onClick={DashboardClick} className="item" href="#">Dashboard</a></li>
+          <li id="active"> <FaBookmark /> <a onClick={ReservationsClick} className="item" href="#">Reservations</a></li>
+          <li ><FaUser /> <a onClick={UserprofileClick} className="item" href="#">User Profile</a></li>
+          <li><BiSolidExit /><a onClick={LogOut} className="item" href="#">Log Out</a></li>
         </ul>
       </div>
+      {showConfirmDialog && (
+        <ConfirmationDialog
+          confirmText="want to log out"
+          onConfirm={handleConfirmLogout}
+          onCancel={handleCancelLogout}
+        />
+      )}
       <div>
         <h2>Current Reservations</h2>
         <table className="table table-hover mt-3">

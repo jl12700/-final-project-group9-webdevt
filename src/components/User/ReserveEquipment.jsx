@@ -16,7 +16,7 @@ const ReserveEquipment = () => {
         <table className="table table-hover mt-3">
           <thead>
             <tr>
-              <th>Equipment ID</th>
+              <th style= {{width: '300px'}} >Equipment ID</th>
               <th>Equipment Name</th>
               <th>Quantity</th>
               <th>Status</th>

@@ -7,10 +7,14 @@ import { BiSolidDashboard } from "react-icons/bi";
 import { FaBookmark } from "react-icons/fa";
 import { BiSolidExit } from "react-icons/bi";
 import { FaUser } from "react-icons/fa";
+import ConfirmationDialog from "../ConfirmationDialog";
+
 
 const UserProfile = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
+
 
   // Sample user data (replace this with dynamic data if necessary)
   const userData = {
@@ -30,7 +34,16 @@ const UserProfile = () => {
     navigate("/user-profile");
   };
   const LogOut = () => {
+    setShowConfirmDialog(true);
+  };
+
+  const handleConfirmLogout = () => {
+    setShowConfirmDialog(false);
     navigate("/");
+  };
+
+  const handleCancelLogout = () => {
+    setShowConfirmDialog(false);
   };
 
   const togglePasswordVisibility = () => {
@@ -40,14 +53,21 @@ const UserProfile = () => {
   return (
     <div className="d-flex">
       <div className="sidebar">
-                    <img src={dash3} alt="Dashboard Logo" className="sidebar-logo" />
-                    <ul>
-                        <li><BiSolidDashboard/> <a onClick={DashboardClick} className="item" href="#">Dashboard</a></li>
-                        <li> <FaBookmark/> <a onClick={ReservationsClick} className="item" href="#">Reservations</a></li>
-                        <li id="active"><FaUser/> <a onClick={UserprofileClick} className="item" href="#">User Profile</a></li>
-                        <li><BiSolidExit/> <a onClick={LogOut} className="item" href="#">Log Out</a></li>
-                    </ul>
-                </div>
+        <img src={dash3} alt="Dashboard Logo" className="sidebar-logo" />
+        <ul>
+          <li><BiSolidDashboard /> <a onClick={DashboardClick} className="item" href="#">Dashboard</a></li>
+          <li> <FaBookmark /> <a onClick={ReservationsClick} className="item" href="#">Reservations</a></li>
+          <li id="active"><FaUser /> <a onClick={UserprofileClick} className="item" href="#">User Profile</a></li>
+          <li><BiSolidExit /><a onClick={LogOut} className="item" href="#">Log Out</a></li>
+        </ul>
+      </div>
+      {showConfirmDialog && (
+        <ConfirmationDialog
+          confirmText="want to log out"
+          onConfirm={handleConfirmLogout}
+          onCancel={handleCancelLogout}
+        />
+      )}
 
       <div className="container-fluid p-5" style={{ marginLeft: "250px" }}>
         <h2>User Profile</h2>

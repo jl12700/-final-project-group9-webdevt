@@ -27,6 +27,13 @@
       "equipmentName": "Adapter",
       "quantity": 15,
       "status": "Unavailable"
+    },
+    {
+      "id": "bd4b",
+      "equipmentID": "100000045",
+      "equipmentName": "Mouse",
+      "quantity": 15,
+      "status": "Available"
     }
   ]
 }

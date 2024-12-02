@@ -9,11 +9,35 @@ import { FaBookmark } from "react-icons/fa";
 import { MdManageAccounts } from "react-icons/md";
 import { IoStatsChartSharp } from "react-icons/io5";
 import { BiSolidExit } from "react-icons/bi";
+import ConfirmationDialog from "../ConfirmationDialog";
+
 
 
 const Statistics = () => {
   const navigate = useNavigate();
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
 
+  const HandleReservationsClick = () => {
+    navigate("/handle-reservations")
+  }
+  const ManageEquipmentClick = () => {
+    navigate("/manage-equipment")
+  }
+  const StatisticsClick = () => {
+    navigate("/statistics")
+  }
+  const LogOut = () => {
+    setShowConfirmDialog(true);
+  };
+
+  const handleConfirmLogout = () => {
+    setShowConfirmDialog(false);
+    navigate("/");
+  };
+
+  const handleCancelLogout = () => {
+    setShowConfirmDialog(false);
+  };
   const { reservations } = useContext(ReservationListContext);
   const [chartData, setChartData] = useState({});
 
@@ -54,31 +78,38 @@ const Statistics = () => {
         <img src={dash3} alt="Dashboard Logo" className="sidebar-logo" />
         <ul>
           <li>
-            <FaBookmark/>
-            <a href="#" className="item" onClick={() => navigate("/handle-reservations")}>
+            <FaBookmark />
+            <a onClick={HandleReservationsClick} className="item" href="#">
               Handle Reservations
             </a>
           </li>
           <li>
-            <MdManageAccounts size={"1.5em"}/>
-            <a href="#" className="item" onClick={() => navigate("/manage-equipment")}>
+            <MdManageAccounts size={"1.5em"} />
+            <a onClick={ManageEquipmentClick} className="item" href="#">
               Manage Equipment
             </a>
           </li>
           <li id="active">
-            <IoStatsChartSharp/>
-            <a href="#"  className="item" onClick={() => navigate("/statistics")}>
+            <IoStatsChartSharp />
+            <a onClick={StatisticsClick} className="item" href="#">
               Statistics
             </a>
           </li>
           <li>
-            <BiSolidExit/>
-            <a href="#" className="item" onClick={() => navigate("/")}>
+            <BiSolidExit />
+            <a onClick={LogOut} className="item" href="#">
               Log Out
             </a>
           </li>
         </ul>
       </div>
+      {showConfirmDialog && (
+        <ConfirmationDialog
+          confirmText="want to log out"
+          onConfirm={handleConfirmLogout}
+          onCancel={handleCancelLogout}
+        />
+      )}
       <div className="content">
         <h2>Most and Least Borrowed Items</h2>
         {chartData.labels ? (

@@ -13,6 +13,7 @@ import ConfirmationDialog from "../ConfirmationDialog";
 
 const HandleReservation = () => {
   const navigate = useNavigate();
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
 
   const HandleReservationsClick = () => {
     navigate("/handle-reservations");
@@ -24,7 +25,16 @@ const HandleReservation = () => {
     navigate("/statistics");
   };
   const LogOut = () => {
+    setShowConfirmDialog(true);
+  };
+
+  const handleConfirmLogout = () => {
+    setShowConfirmDialog(false);
     navigate("/");
+  };
+
+  const handleCancelLogout = () => {
+    setShowConfirmDialog(false);
   };
 
   const { reservations, removeReservation, fetchReservations, updateReservation } =
@@ -90,13 +100,20 @@ const HandleReservation = () => {
             </a>
           </li>
           <li>
-            <BiSolidExit/>
+            <BiSolidExit />
             <a onClick={LogOut} className="item" href="#">
               Log Out
             </a>
           </li>
         </ul>
       </div>
+      {showConfirmDialog && (
+        <ConfirmationDialog
+          confirmText="want to log out"
+          onConfirm={handleConfirmLogout}
+          onCancel={handleCancelLogout}
+        />
+      )}
       <div className="content">
         <div>
           <h2>Reservations</h2>

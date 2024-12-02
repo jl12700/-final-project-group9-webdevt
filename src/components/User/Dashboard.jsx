@@ -9,10 +9,13 @@ import { FaBookmark } from "react-icons/fa";
 import { BiSolidExit } from "react-icons/bi";
 import { FaUser } from "react-icons/fa";
 import ReservationCart from './ReservationCart';
+import ConfirmationDialog from "../ConfirmationDialog";
+
 
 const Dashboard = () => {
     const navigate = useNavigate();
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [showConfirmDialog, setShowConfirmDialog] = useState(false);
 
     const DashboardClick = () => {
         navigate("/dashboard")
@@ -24,8 +27,17 @@ const Dashboard = () => {
         navigate("/user-profile")
     }
     const LogOut = () => {
-        navigate("/")
-    }
+        setShowConfirmDialog(true);
+      };
+    
+      const handleConfirmLogout = () => {
+        setShowConfirmDialog(false);
+        navigate("/");
+      };
+    
+      const handleCancelLogout = () => {
+        setShowConfirmDialog(false);
+      };
 
     return (
         <div>
@@ -36,9 +48,17 @@ const Dashboard = () => {
                         <li id="active"> <BiSolidDashboard /> <a onClick={DashboardClick} className="item" href="#">Dashboard</a></li>
                         <li><FaBookmark /> <a onClick={ReservationsClick} className="item" href="#">Reservations</a></li>
                         <li><FaUser /> <a onClick={UserprofileClick} className="item" href="#">User Profile</a></li>
-                        <li><BiSolidExit /> <a onClick={LogOut} className="item" href="#">Log Out</a></li>
+                        <li><BiSolidExit /><a onClick={LogOut} className="item" href="#">Log Out</a>
+                        </li>
                     </ul>
                 </div>
+                {showConfirmDialog && (
+                    <ConfirmationDialog
+                        confirmText="want to log out"
+                        onConfirm={handleConfirmLogout}
+                        onCancel={handleCancelLogout}
+                    />
+                )}
             </div>
             <div className="content">
                 <div>
@@ -48,7 +68,6 @@ const Dashboard = () => {
                 </div>
                 <ReserveEquipment />
             </div>
-
             <ReservationCart
                 isOpen={modalIsOpen}
                 onRequestClose={() => setModalIsOpen(false)}

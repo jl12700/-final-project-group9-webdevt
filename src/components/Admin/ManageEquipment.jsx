@@ -79,7 +79,6 @@ const Admin = () => {
           onCancel={handleCancelLogout}
         />
       )}
-      <h2>Manage Equipments</h2>
       <div className="content">
         <h3>Add Equipment</h3>
         <EquipmentForm />

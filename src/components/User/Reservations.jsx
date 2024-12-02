@@ -96,7 +96,7 @@ const Reservations = () => {
           onCancel={handleCancelLogout}
         />
       )}
-      <div>
+      <div className="content">
         <h2>Current Reservations</h2>
         <table className="table table-hover mt-3">
           <thead>
@@ -121,7 +121,7 @@ const Reservations = () => {
                 <td>{reservation.status}</td>
                 <td>
                   <button
-                    className="btn btn-danger"
+                    className="btn btn-danger" 
                     disabled={reservation.status !== "Pending"}
                     onClick={(e) => {
                       e.stopPropagation();
@@ -130,7 +130,7 @@ const Reservations = () => {
                   >
                     Remove
                   </button>
-                  <button
+                  <button 
                     className="btn btn-info ms-2"
                     onClick={() => handleViewClick(reservation)}
                   >
@@ -141,7 +141,7 @@ const Reservations = () => {
             ))}
           </tbody>
         </table>
-
+        
         <h2>Past Reservations</h2>
         <table className="table table-hover mt-3">
           <thead>

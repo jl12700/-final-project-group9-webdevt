@@ -61,11 +61,13 @@ const Dashboard = () => {
                 )}
             </div>
             <div className="content">
-                <div>
-                    <button className="btn btn-secondary" onClick={() => setModalIsOpen(true)}>
+                <div className="top-right-container">
+                <h2>Reserve Equipment</h2>
+                    <button className="btn btn-secondary cart-button" onClick={() => setModalIsOpen(true)}>
                         <IoCart />
                     </button>
                 </div>
+                
                 <ReserveEquipment />
             </div>
             <ReservationCart

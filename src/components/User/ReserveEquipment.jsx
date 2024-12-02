@@ -12,15 +12,15 @@ const ReserveEquipment = () => {
 
   return (
     <div>
-      <div><h2>Reserve Equipment</h2>
+      <div>
         <table className="table table-hover mt-3">
           <thead>
             <tr>
-              <th style= {{width: '300px'}} >Equipment ID</th>
+              <th>Equipment ID</th>
               <th>Equipment Name</th>
               <th>Quantity</th>
               <th>Status</th>
-              <th>Actions</th>
+              <th style={{width: '100px'}}>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -34,14 +34,14 @@ const ReserveEquipment = () => {
                 <td>{equipment.equipmentName}</td>
                 <td>{equipment.quantity}</td>
                 <td>{equipment.status}</td>
-                <td>
+                <td >
                   <button
                     className="btn btn-primary"
                     disabled={equipment.status !== "Available"}
                     onClick={() => setSelectedEquipment(equipment)}
                     style={{
                       backgroundColor: equipment.status === "Available" ? "" : "grey",
-                      border: "none",
+                      border: "none"
                     }}
                   >
                     Reserve

@@ -18,7 +18,7 @@ const UserProfile = () => {
 
   // Sample user data (replace this with dynamic data if necessary)
   const userData = {
-    studentNumber: "12345678",
+    studentNumber: "12345",
     name: "John Doe",
     email: "johndoe@dlsl.edu.ph",
     password: "password123"
@@ -69,48 +69,48 @@ const UserProfile = () => {
         />
       )}
 
-      <div className="container-fluid p-5" style={{ marginLeft: "250px" }}>
-        <h2>User Profile</h2>
-        <div className="card mt-4 p-4">
-          <div className="row">
+<div className="container-fluid p-5" style={{ marginLeft: "200px" }}>
+    <h2>User Profile</h2>
+    <div className="card mt-4 p-4 wider-card">
+        <div className="row">
             <div className="col-md-6">
-              <div className="mb-3">
-                <label className="form-label">Student Number</label>
-                <p>{userData.studentNumber}</p>
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Name</label>
-                <p>{userData.name}</p>
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Email</label>
-                <p>{userData.email}</p>
-              </div>
+                <div className="mb-3">
+                    <label className="form-label">Student Number</label>
+                    <p>{userData.studentNumber}</p>
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Name</label>
+                    <p>{userData.name}</p>
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Email</label>
+                    <p>{userData.email}</p>
+                </div>
             </div>
 
             <div className="col-md-6">
-              <div className="mb-3">
-                <label className="form-label">Password</label>
-                <div className="input-group">
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    className="form-control"
-                    value={userData.password}
-                    readOnly
-                  />
-                  <button
-                    className="btn btn-outline-secondary"
-                    type="button"
-                    onClick={togglePasswordVisibility}
-                  >
-                    {showPassword ? "Hide" : "Show"}
-                  </button>
+                <div className="mb-3">
+                    <label className="form-label">Password</label>
+                    <div className="input-group">
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            className="form-control"
+                            value={userData.password}
+                            readOnly
+                        />
+                        <button
+                            className="btn btn-outline-secondary"
+                            type="button"
+                            onClick={togglePasswordVisibility}
+                        >
+                            {showPassword ? "Hide" : "Show"}
+                        </button>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
+</div>
     </div>
   );
 };

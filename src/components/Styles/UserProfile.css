@@ -1,0 +1,4 @@
+.wider-card {
+    width: 1000px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+}

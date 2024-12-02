@@ -67,6 +67,9 @@ body {
     flex: 1;
     padding: 20px;
     box-sizing: border-box;
+    margin-left: 200px !important;
+    display: flex; /* Use flex layout */
+    flex-direction: column; /* Ensure vertical stacking of elements */
 }
 
 /* Active item styles */
@@ -87,7 +90,8 @@ body {
 }
 
 .table {
-    width: 100%;
+    width: 1000px !important; 
+    height: auto !important;
     margin-top: 20px;
     border-collapse: collapse;
   }
@@ -101,3 +105,13 @@ body {
     background-color: #f2f2f2;
     text-align: left;
   }
+.top-right-container {
+    position: relative;
+}
+
+.cart-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px; /* Adjust spacing as needed */
+}

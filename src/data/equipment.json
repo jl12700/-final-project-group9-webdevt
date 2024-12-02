@@ -20,6 +20,13 @@
       "equipmentName": "Speaker",
       "quantity": 69,
       "status": "Available"
+    },
+    {
+      "id": "7e71",
+      "equipmentID": "10000004",
+      "equipmentName": "Adapter",
+      "quantity": 15,
+      "status": "Unavailable"
     }
   ]
 }

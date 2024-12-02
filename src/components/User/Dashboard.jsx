@@ -43,7 +43,7 @@ const Dashboard = () => {
                 </div>
             </div>
             <div className="content">
-                <EquipmentList />
+                
                 <div>
                     <button className="btn btn-secondary" onClick={ReservationCart}>
                         <IoCart />

@@ -1,6 +1,6 @@
-import React, { useState, useContext } from 'react';
-import { EquipmentContext } from '../../context/EquipmentContext';
-import EquipmentModal from './EquipmentModal';
+import React, { useState, useContext } from "react";
+import { EquipmentContext } from "../../context/EquipmentContext";
+import EquipmentModal from "./EquipmentModal";
 import { BiSolidDashboard } from "react-icons/bi";
 import { FaBookmark } from "react-icons/fa";
 import { BiSolidExit } from "react-icons/bi";
@@ -9,9 +9,6 @@ import { FaUser } from "react-icons/fa";
 const ReserveEquipment = () => {
   const { equipmentList } = useContext(EquipmentContext);
   const [selectedEquipment, setSelectedEquipment] = useState(null);
-
-  // Filter available equipment
-  const availableEquipment = equipmentList.filter((equipment) => equipment.status === 'Available');
 
   return (
     <div>
@@ -22,25 +19,43 @@ const ReserveEquipment = () => {
             <th>Equipment ID</th>
             <th>Equipment Name</th>
             <th>Quantity</th>
+            <th>Status</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {availableEquipment.map((equipment, index) => (
+          {equipmentList.map((equipment, index) => (
             <tr
               key={index}
-              onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#f0f8ff')}
-              onMouseOut={(e) => (e.currentTarget.style.backgroundColor = '')}
-              onClick={() => setSelectedEquipment(equipment)}
+              onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#f0f8ff")}
+              onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "")}
             >
               <td>{equipment.equipmentID}</td>
               <td>{equipment.equipmentName}</td>
               <td>{equipment.quantity}</td>
+              <td>{equipment.status}</td>
+              <td>
+                <button
+                  className="btn btn-primary"
+                  disabled={equipment.status !== "Available"}
+                  onClick={() => setSelectedEquipment(equipment)}
+                  style={{
+                    backgroundColor: equipment.status === "Available" ? "" : "grey",
+                    border: "none",
+                  }}
+                >
+                  Reserve
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
       {selectedEquipment && (
-        <EquipmentModal equipment={selectedEquipment} onClose={() => setSelectedEquipment(null)} />
+        <EquipmentModal
+          equipment={selectedEquipment}
+          onClose={() => setSelectedEquipment(null)}
+        />
       )}
     </div>
   );

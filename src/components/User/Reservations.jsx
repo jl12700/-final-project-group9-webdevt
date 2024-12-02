@@ -11,95 +11,133 @@ import { BiSolidExit } from "react-icons/bi";
 import { FaUser } from "react-icons/fa";
 
 const Reservations = () => {
-    const navigate = useNavigate();
-    const { reservations, removeReservation, fetchReservations } = useContext(ReservationListContext);
-    const [selectedReservation, setSelectedReservation] = useState(null);
+  const navigate = useNavigate();
+  const { reservations, removeReservation, fetchReservations } = useContext(ReservationListContext);
+  const [selectedReservation, setSelectedReservation] = useState(null);
 
-    const availableReservations = reservations.filter((reservation) => reservation.status != 'Returned' || 'Reserved');
+  useEffect(() => {
+    fetchReservations(); // Fetch reservations when component mounts
+  }, [fetchReservations]);
 
-    useEffect(() => {
-        fetchReservations(); // Fetch reservations when component mounts
-    }, [fetchReservations]);
+  const handleViewClick = (reservation) => {
+    setSelectedReservation(reservation);
+  };
 
-    const DashboardClick = () => {
-        navigate("/dashboard");
-    };
-    const ReservationsClick = () => {
-        navigate("/reservations");
-    };
-    const UserprofileClick = () => {
-        navigate("/user-profile");
-    };
-    const LogOut = () => {
-        navigate("/");
-    };
-    const handleRowClick = (reservation) => {
-        setSelectedReservation(reservation);
-    };
+  const closeModal = () => {
+    setSelectedReservation(null);
+  };
 
-    const closeModal = () => {
-        setSelectedReservation(null);
-    };
+  const currentReservations = reservations.filter(
+    (reservation) => reservation.status !== "Returned"
+  );
+  const pastReservations = reservations.filter(
+    (reservation) => reservation.status === "Returned"
+  );
 
-    return (
-        <div>
-            <div>
-                <div className="sidebar">
-                    <img src={dash3} alt="Dashboard Logo" className="sidebar-logo" />
-                    <ul>
-                        <li><BiSolidDashboard/> <a onClick={DashboardClick} className="item" href="#">Dashboard</a></li>
-                        <li  id="active" > <FaBookmark/> <a onClick={ReservationsClick} className="item" href="#">Reservations</a></li>
-                        <li><FaUser/> <a onClick={UserprofileClick} className="item" href="#">User Profile</a></li>
-                        <li><BiSolidExit/> <a onClick={LogOut} className="item" href="#">Log Out</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div>
-                <h2>Reservations</h2>
-                <table className="table table-hover mt-3">
-                    <thead>
-                        <tr>
-                            <th>Index</th>
-                            <th>Reservation Date</th>
-                            <th>Start Time</th>
-                            <th>End Time</th>
-                            <th>Return Date</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {availableReservations.map((reservation, index) => (
-                            <tr
-                                key={reservation.id}
-                                onClick={() => handleRowClick(reservation)}
-                            >
-                                <td>{index + 1}</td>
-                                <td>{reservation.reservationDate}</td>
-                                <td>{reservation.startTime}</td>
-                                <td>{reservation.endTime}</td>
-                                <td>{reservation.returnDate}</td>
-                                <td>{reservation.status}</td>
-                                <td>
-                                    <button
-                                        className="btn btn-danger"
-                                        onClick={(e) => {
-                                            e.stopPropagation(); // Prevent modal from opening when removing
-                                            removeReservation(reservation.id);
-                                        }}
-                                    >
-                                        Remove
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+  return (
+    <div>
+      <div className="sidebar">
+        <img src={dash3} alt="Dashboard Logo" className="sidebar-logo" />
+        <ul>
+          <li><BiSolidDashboard /> <a onClick={() => navigate("/dashboard")} className="item" href="#">Dashboard</a></li>
+          <li id="active"><FaBookmark /> <a onClick={() => navigate("/reservations")} className="item" href="#">Reservations</a></li>
+          <li><FaUser /> <a onClick={() => navigate("/user-profile")} className="item" href="#">User Profile</a></li>
+          <li><BiSolidExit /> <a onClick={() => navigate("/")} className="item" href="#">Log Out</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Current Reservations</h2>
+        <table className="table table-hover mt-3">
+          <thead>
+            <tr>
+              <th>Index</th>
+              <th>Reservation Date</th>
+              <th>Start Time</th>
+              <th>End Time</th>
+              <th>Return Date</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {currentReservations.map((reservation, index) => (
+              <tr key={reservation.id}>
+                <td>{index + 1}</td>
+                <td>{reservation.reservationDate}</td>
+                <td>{reservation.startTime}</td>
+                <td>{reservation.endTime}</td>
+                <td>{reservation.returnDate}</td>
+                <td>{reservation.status}</td>
+                <td>
+                  <button
+                    className="btn btn-danger"
+                    disabled={reservation.status !== "Pending"}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      removeReservation(reservation.id);
+                    }}
+                  >
+                    Remove
+                  </button>
+                  <button
+                    className="btn btn-info ms-2"
+                    onClick={() => handleViewClick(reservation)}
+                  >
+                    View
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
 
-                <ReservationModal selectedReservation={selectedReservation} closeModal={closeModal} />
-            </div>
-        </div>
-    );
+        <h2>Past Reservations</h2>
+        <table className="table table-hover mt-3">
+          <thead>
+            <tr>
+              <th>Index</th>
+              <th>Reservation Date</th>
+              <th>Start Time</th>
+              <th>End Time</th>
+              <th>Return Date</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {pastReservations.map((reservation, index) => (
+              <tr key={reservation.id}>
+                <td>{index + 1}</td>
+                <td>{reservation.reservationDate}</td>
+                <td>{reservation.startTime}</td>
+                <td>{reservation.endTime}</td>
+                <td>{reservation.returnDate}</td>
+                <td>{reservation.status}</td>
+                <td>
+                  {reservation.status === "Returned" && (
+                    <span className="badge bg-success me-2">Returned</span>
+                  )}
+                  <button
+                    className="btn btn-info"
+                    onClick={() => handleViewClick(reservation)}
+                  >
+                    View
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        {selectedReservation && (
+          <ReservationModal
+            selectedReservation={selectedReservation}
+            closeModal={closeModal}
+          />
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default Reservations;

@@ -2,6 +2,7 @@
 setlocal enabledelayedexpansion
 
 :: Start servers
+
 start /B "" cmd /c "npm start"
 start /B "" cmd /c "json-server --watch src/DATA/equipment.json --port 5000"
 start /B "" cmd /c "json-server --watch src/DATA/reservation.json --port 5001"

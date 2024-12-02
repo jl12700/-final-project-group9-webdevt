@@ -43,6 +43,7 @@ const ReservationCart = () => {
   
     confirmReservation(reservation);
     setFormData({ reservationDate: '', startTime: '', endTime: '', returnDate: '', notes: '' });
+    
   };
   const navigate = useNavigate ();
   const DashboardClick = () => {

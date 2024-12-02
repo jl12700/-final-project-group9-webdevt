@@ -9,7 +9,7 @@ import { FaBookmark } from "react-icons/fa";
 import { MdManageAccounts } from "react-icons/md";
 import { IoStatsChartSharp } from "react-icons/io5";
 import { BiSolidExit } from "react-icons/bi";
-
+import ConfirmationDialog from "../ConfirmationDialog";
 
 const HandleReservation = () => {
   const navigate = useNavigate();
@@ -30,6 +30,8 @@ const HandleReservation = () => {
   const { reservations, removeReservation, fetchReservations, updateReservation } =
     useContext(ReservationListContext);
   const [selectedReservation, setSelectedReservation] = useState(null);
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [reservationToRemove, setReservationToRemove] = useState(null);
 
   const availableReservations = reservations.filter(
     (reservation) => reservation.status !== "lol"
@@ -51,6 +53,17 @@ const HandleReservation = () => {
     const { id, status, notes } = updatedReservation;
     updateReservation(id, { status, notes }); // Pass id and update data separately
     closeModal();
+  };
+
+  const handleConfirmRemove = () => {
+    removeReservation(reservationToRemove);
+    setShowConfirmation(false);
+    setReservationToRemove(null);
+  };
+
+  const handleCancelRemove = () => {
+    setShowConfirmation(false);
+    setReservationToRemove(null);
   };
 
   return (
@@ -119,7 +132,8 @@ const HandleReservation = () => {
                       className="btn btn-danger"
                       onClick={(e) => {
                         e.stopPropagation();
-                        removeReservation(reservation.id);
+                        setReservationToRemove(reservation.id);
+                        setShowConfirmation(true);
                       }}
                     >
                       Remove
@@ -135,6 +149,14 @@ const HandleReservation = () => {
             closeModal={closeModal}
             saveChanges={saveChanges}
           />
+
+          {showConfirmation && (
+            <ConfirmationDialog
+              confirmText="want to remove this reservation"
+              onConfirm={handleConfirmRemove}
+              onCancel={handleCancelRemove}
+            />
+          )}
         </div>
       </div>
     </div>

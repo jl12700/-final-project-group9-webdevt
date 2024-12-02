@@ -53,6 +53,38 @@
       "returnDate": "2024-12-18",
       "notes": "12321",
       "status": "Reserved"
+    },
+    {
+      "id": "bc73",
+      "reservationID": 1733142937444,
+      "user": {
+        "userid": "12345",
+        "username": "John Doe",
+        "email": "johndoe@example.com"
+      },
+      "equipment": [
+        {
+          "equipmentID": "10000001",
+          "equipmentName": "Mac Charger",
+          "quantity": 1
+        },
+        {
+          "equipmentID": "10000002",
+          "equipmentName": "Macbook",
+          "quantity": 1
+        },
+        {
+          "equipmentID": "1000000",
+          "equipmentName": "Speaker",
+          "quantity": 1
+        }
+      ],
+      "reservationDate": "2024-12-02",
+      "startTime": "22:35",
+      "endTime": "22:35",
+      "returnDate": "2024-12-10",
+      "notes": "Nice",
+      "status": "Pending"
     }
   ]
 }

@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { EquipmentContext } from '../../context/EquipmentContext';
+import ConfirmationDialog from '../ConfirmationDialog';
 
 const Equipments = () => {
   const { equipmentList, updateEquipment, removeEquipment } = useContext(EquipmentContext);
@@ -10,6 +11,8 @@ const Equipments = () => {
     quantity: '',
     status: 'Available',
   });
+  const [showDialog, setShowDialog] = useState(false);
+  const [removeIndex, setRemoveIndex] = useState(null);
 
   const handleEdit = (index) => {
     setEditIndex(index);
@@ -43,9 +46,19 @@ const Equipments = () => {
   };
 
   const handleRemove = (index) => {
-    if (window.confirm('Are you sure you want to remove this item?')) {
-      removeEquipment(index);
-    }
+    setRemoveIndex(index);
+    setShowDialog(true);
+  };
+
+  const confirmRemove = () => {
+    removeEquipment(removeIndex);
+    setShowDialog(false);
+    setRemoveIndex(null);
+  };
+
+  const cancelRemove = () => {
+    setShowDialog(false);
+    setRemoveIndex(null);
   };
 
   const handleChange = (e) => {
@@ -131,6 +144,14 @@ const Equipments = () => {
           ))}
         </tbody>
       </table>
+
+      {showDialog && (
+        <ConfirmationDialog
+          confirmText="want to remove this item"
+          onConfirm={confirmRemove}
+          onCancel={cancelRemove}
+        />
+      )}
     </div>
   );
 };

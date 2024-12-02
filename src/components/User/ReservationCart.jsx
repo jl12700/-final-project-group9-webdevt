@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
-import { useNavigate } from "react-router-dom";
+import Modal from 'react-modal';
 import { ReservationContext } from '../../context/ReservationContext';
+import ConfirmationDialog from '../ConfirmationDialog';
 
-const ReservationCart = () => {
+const ReservationCart = ({ isOpen, onRequestClose }) => {
   const { cart, removeFromCart, confirmReservation } = useContext(ReservationContext);
-
   const [formData, setFormData] = useState({
     reservationDate: '',
     startTime: '',
@@ -12,6 +12,8 @@ const ReservationCart = () => {
     returnDate: '',
     notes: '',
   });
+  const [showDialog, setShowDialog] = useState(false);
+  const [itemToRemove, setItemToRemove] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,12 +25,12 @@ const ReservationCart = () => {
       alert('Your cart is empty. Please add some equipment before confirming.');
       return;
     }
-  
+
     if (Object.values(formData).some((value) => value === '')) {
       alert('All fields must be filled out.');
       return;
     }
-  
+
     const reservation = {
       reservationID: Date.now(),
       user: { userid: '12345', username: 'John Doe', email: 'johndoe@example.com' },
@@ -40,19 +42,35 @@ const ReservationCart = () => {
       ...formData,
       status: 'Pending',
     };
-  
+
     confirmReservation(reservation);
     setFormData({ reservationDate: '', startTime: '', endTime: '', returnDate: '', notes: '' });
-    
+    onRequestClose();
   };
-  const navigate = useNavigate ();
-  const DashboardClick = () => {
-    setFormData({ reservationDate: '', startTime: '', endTime: '', returnDate: '', notes: '' });
-    navigate("/dashboard");
+
+  const handleRemoveClick = (index) => {
+    setItemToRemove(index);
+    setShowDialog(true);
+  };
+
+  const handleConfirmRemove = () => {
+    removeFromCart(itemToRemove);
+    setShowDialog(false);
+    setItemToRemove(null);
+  };
+
+  const handleCancelRemove = () => {
+    setShowDialog(false);
+    setItemToRemove(null);
+    
   };
 
   return (
-    <div className="mt-4">
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={onRequestClose}
+      contentLabel="Reservation Cart"
+    >
       <h2>Reservation Cart</h2>
       <table className="table">
         <thead>
@@ -70,7 +88,7 @@ const ReservationCart = () => {
               <td>{item.equipmentName}</td>
               <td>{item.quantity}</td>
               <td>
-                <button className="btn btn-danger" onClick={() => removeFromCart(index)}>
+                <button className="btn btn-danger" onClick={() => handleRemoveClick(index)}>
                   Remove
                 </button>
               </td>
@@ -78,6 +96,14 @@ const ReservationCart = () => {
           ))}
         </tbody>
       </table>
+
+      {showDialog && (
+        <ConfirmationDialog
+          confirmText="want to remove this item"
+          onConfirm={handleConfirmRemove}
+          onCancel={handleCancelRemove}
+        />
+      )}
 
       <form className="mt-3">
         <div className="mb-3">
@@ -103,11 +129,11 @@ const ReservationCart = () => {
         <button type="button" className="btn btn-success me-2" onClick={handleConfirm}>
           Confirm Selection
         </button>
-        <button type="button" className="btn btn-secondary" onClick={DashboardClick}>
+        <button type="button" className="btn btn-secondary" onClick={onRequestClose}>
           Cancel
         </button>
       </form>
-    </div>
+    </Modal>
   );
 };
 

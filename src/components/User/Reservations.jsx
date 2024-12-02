@@ -5,6 +5,7 @@ import "../Styles/reservations.css";
 import dash3 from "../Assets/dash3.png"; // Importing the logo image
 import { ReservationListContext } from "../../context/ReservationListContext";
 import ReservationModal from "./ReservationModal.jsx";
+import ConfirmationDialog from "../ConfirmationDialog";
 import { BiSolidDashboard } from "react-icons/bi";
 import { FaBookmark } from "react-icons/fa";
 import { BiSolidExit } from "react-icons/bi";
@@ -14,6 +15,8 @@ const Reservations = () => {
   const navigate = useNavigate();
   const { reservations, removeReservation, fetchReservations } = useContext(ReservationListContext);
   const [selectedReservation, setSelectedReservation] = useState(null);
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [reservationToRemove, setReservationToRemove] = useState(null);
 
   useEffect(() => {
     fetchReservations(); // Fetch reservations when component mounts
@@ -25,6 +28,24 @@ const Reservations = () => {
 
   const closeModal = () => {
     setSelectedReservation(null);
+  };
+
+  const handleRemoveClick = (reservation) => {
+    setReservationToRemove(reservation);
+    setShowConfirmation(true);
+  };
+
+  const handleConfirmRemove = () => {
+    if (reservationToRemove) {
+      removeReservation(reservationToRemove.id);
+      setShowConfirmation(false);
+      setReservationToRemove(null);
+    }
+  };
+
+  const handleCancelRemove = () => {
+    setShowConfirmation(false);
+    setReservationToRemove(null);
   };
 
   const currentReservations = reservations.filter(
@@ -74,7 +95,7 @@ const Reservations = () => {
                     disabled={reservation.status !== "Pending"}
                     onClick={(e) => {
                       e.stopPropagation();
-                      removeReservation(reservation.id);
+                      handleRemoveClick(reservation);
                     }}
                   >
                     Remove
@@ -133,6 +154,14 @@ const Reservations = () => {
           <ReservationModal
             selectedReservation={selectedReservation}
             closeModal={closeModal}
+          />
+        )}
+
+        {showConfirmation && (
+          <ConfirmationDialog
+            confirmText="want to remove this reservation"
+            onConfirm={handleConfirmRemove}
+            onCancel={handleCancelRemove}
           />
         )}
       </div>

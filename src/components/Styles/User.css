@@ -74,8 +74,14 @@ body {
     background-color: #32620e; /* Active item color */
     color: white;
     font-weight: bold;
-    text-decoration: underline;
     text-decoration-color: white;
     border-left: 2px solid white;
     padding-right: 10px;
+    margin-left: 15px;
+    padding-left: 10px;
+}
+
+#active a{
+    text-decoration: underline;
+    margin-left: -5px;
 }

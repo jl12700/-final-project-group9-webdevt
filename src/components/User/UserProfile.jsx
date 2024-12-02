@@ -3,6 +3,10 @@ import { useNavigate } from "react-router-dom";
 import "../Styles/User.css";
 import "../Styles/UserProfile.css"
 import dash3 from "../Assets/dash3.png"; // Importing the logo image
+import { BiSolidDashboard } from "react-icons/bi";
+import { FaBookmark } from "react-icons/fa";
+import { BiSolidExit } from "react-icons/bi";
+import { FaUser } from "react-icons/fa";
 
 const UserProfile = () => {
   const navigate = useNavigate();
@@ -38,10 +42,10 @@ const UserProfile = () => {
       <div className="sidebar">
                     <img src={dash3} alt="Dashboard Logo" className="sidebar-logo" />
                     <ul>
-                        <li><a onClick={DashboardClick} className="item" href="#">Dashboard</a></li>
-                        <li><a onClick={ReservationsClick} className="item" href="#">Reservations</a></li>
-                        <li><a onClick={UserprofileClick} id="active" className="item" href="#">User Profile</a></li>
-                        <li><a onClick={LogOut} className="item" href="#">Log Out</a></li>
+                        <li><BiSolidDashboard/> <a onClick={DashboardClick} className="item" href="#">Dashboard</a></li>
+                        <li> <FaBookmark/> <a onClick={ReservationsClick} className="item" href="#">Reservations</a></li>
+                        <li id="active"><FaUser/> <a onClick={UserprofileClick} className="item" href="#">User Profile</a></li>
+                        <li><BiSolidExit/> <a onClick={LogOut} className="item" href="#">Log Out</a></li>
                     </ul>
                 </div>
 

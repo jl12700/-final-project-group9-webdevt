@@ -1,6 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { EquipmentContext } from '../../context/EquipmentContext';
 import EquipmentModal from './EquipmentModal';
+import { BiSolidDashboard } from "react-icons/bi";
+import { FaBookmark } from "react-icons/fa";
+import { BiSolidExit } from "react-icons/bi";
+import { FaUser } from "react-icons/fa";
 
 const ReserveEquipment = () => {
   const { equipmentList } = useContext(EquipmentContext);

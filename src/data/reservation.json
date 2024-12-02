@@ -25,7 +25,34 @@
       "endTime": "19:18",
       "returnDate": "2024-12-06",
       "notes": "Macc",
-      "status": "Approved"
+      "status": "Reserved"
+    },
+    {
+      "id": "947c",
+      "reservationID": 1733117204700,
+      "user": {
+        "userid": "12345",
+        "username": "John Doe",
+        "email": "johndoe@example.com"
+      },
+      "equipment": [
+        {
+          "equipmentID": "10000001",
+          "equipmentName": "Mac Charger",
+          "quantity": 10
+        },
+        {
+          "equipmentID": "10000002",
+          "equipmentName": "Macbook",
+          "quantity": 6
+        }
+      ],
+      "reservationDate": "2024-12-12",
+      "startTime": "13:26",
+      "endTime": "13:32",
+      "returnDate": "2024-12-18",
+      "notes": "12321",
+      "status": "Reserved"
     }
   ]
 }

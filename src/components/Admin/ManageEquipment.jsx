@@ -4,6 +4,10 @@ import "../Styles/Admin.css";
 import dash3 from "../Assets/dash3.png";
 import EquipmentForm from "./EquipmentForm"
 import Equipments from "./Equipments"
+import { FaBookmark } from "react-icons/fa";
+import { MdManageAccounts } from "react-icons/md";
+import { IoStatsChartSharp } from "react-icons/io5";
+import { BiSolidExit } from "react-icons/bi";
 
 
 const Admin = () => {
@@ -31,21 +35,25 @@ const Admin = () => {
         <img src={dash3} alt="Dashboard Logo" className="sidebar-logo" />
         <ul>
           <li>
+            <FaBookmark/>
             <a onClick={HandleReservationsClick} className="item" href="#">
               Handle Reservations
             </a>
           </li>
-          <li>
-            <a onClick={ManageEquipmentClick} id="active" className="item" href="#">
+          <li id="active">
+            <MdManageAccounts size={"1.5em"}/>
+            <a onClick={ManageEquipmentClick}  className="item" href="#">
               Manage Equipment
             </a>
           </li>
           <li>
+            <IoStatsChartSharp/>
             <a onClick={StatisticsClick} className="item" href="#">
               Statistics
             </a>
           </li>
           <li>
+            <BiSolidExit/>
             <a onClick={LogOut} className="item" href="#">
               Log Out
             </a>

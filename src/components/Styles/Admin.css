@@ -74,7 +74,7 @@ body {
     background-color: #32620e; /* Active item color */
     color: white;
     font-weight: bold;
-    text-decoration: underline;
+    
     text-decoration-color: white;
     border-left: 2px solid white;
     padding-right: 10px;

@@ -5,6 +5,10 @@ import "../Styles/reservations.css";
 import dash3 from "../Assets/dash3.png"; // Importing the logo image
 import { ReservationListContext } from "../../context/ReservationListContext";
 import ReservationModal from "./ReservationModal.jsx";
+import { BiSolidDashboard } from "react-icons/bi";
+import { FaBookmark } from "react-icons/fa";
+import { BiSolidExit } from "react-icons/bi";
+import { FaUser } from "react-icons/fa";
 
 const Reservations = () => {
     const navigate = useNavigate();
@@ -43,10 +47,10 @@ const Reservations = () => {
                 <div className="sidebar">
                     <img src={dash3} alt="Dashboard Logo" className="sidebar-logo" />
                     <ul>
-                        <li><a onClick={DashboardClick} className="item" href="#">Dashboard</a></li>
-                        <li><a onClick={ReservationsClick} id="active" className="item" href="#">Reservations</a></li>
-                        <li><a onClick={UserprofileClick} className="item" href="#">User Profile</a></li>
-                        <li><a onClick={LogOut} className="item" href="#">Log Out</a></li>
+                        <li><BiSolidDashboard/> <a onClick={DashboardClick} className="item" href="#">Dashboard</a></li>
+                        <li  id="active" > <FaBookmark/> <a onClick={ReservationsClick} className="item" href="#">Reservations</a></li>
+                        <li><FaUser/> <a onClick={UserprofileClick} className="item" href="#">User Profile</a></li>
+                        <li><BiSolidExit/> <a onClick={LogOut} className="item" href="#">Log Out</a></li>
                     </ul>
                 </div>
             </div>

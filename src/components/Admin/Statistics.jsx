@@ -5,6 +5,11 @@ import { Bar } from "react-chartjs-2";
 import { ReservationListContext } from "../../context/ReservationListContext";
 import "../Styles/Admin.css";
 import dash3 from "../Assets/dash3.png";
+import { FaBookmark } from "react-icons/fa";
+import { MdManageAccounts } from "react-icons/md";
+import { IoStatsChartSharp } from "react-icons/io5";
+import { BiSolidExit } from "react-icons/bi";
+
 
 const Statistics = () => {
   const navigate = useNavigate();
@@ -49,21 +54,25 @@ const Statistics = () => {
         <img src={dash3} alt="Dashboard Logo" className="sidebar-logo" />
         <ul>
           <li>
+            <FaBookmark/>
             <a href="#" className="item" onClick={() => navigate("/handle-reservations")}>
               Handle Reservations
             </a>
           </li>
           <li>
+            <MdManageAccounts size={"1.5em"}/>
             <a href="#" className="item" onClick={() => navigate("/manage-equipment")}>
               Manage Equipment
             </a>
           </li>
-          <li>
-            <a href="#" id="active" className="item" onClick={() => navigate("/statistics")}>
+          <li id="active">
+            <IoStatsChartSharp/>
+            <a href="#"  className="item" onClick={() => navigate("/statistics")}>
               Statistics
             </a>
           </li>
           <li>
+            <BiSolidExit/>
             <a href="#" className="item" onClick={() => navigate("/")}>
               Log Out
             </a>
